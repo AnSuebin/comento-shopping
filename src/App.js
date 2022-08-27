@@ -8,10 +8,9 @@ import Header from './components/Header'
 function App() {
   return (
     <BrowserRouter>
-      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/product/:productId" element={<ProductDetail />} />
+        <Route path="/product" element={<ProductDetail />} />
         <Route path="/basket" element={<Basket />} />
       </Routes>
     </BrowserRouter>

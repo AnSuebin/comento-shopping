@@ -1,5 +1,6 @@
 import ProductBrief from '../components/ProductBrief'
 import styled from 'styled-components'
+import Header from '../components/Header'
 
 const MainLine = styled.hr`
   border: solid 1px rgba(238, 238, 238, 1);
@@ -32,6 +33,7 @@ const MainContainer = styled.div`
 const Home = () => {
   return (
     <div>
+      <Header />
       <MainLine />
       <BottonContainer>
         <Tegbutton># 겨울 방한템</Tegbutton>
