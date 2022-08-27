@@ -3,7 +3,6 @@ import './App.css'
 import Home from './pages/Home'
 import ProductDetail from './pages/ProductDetail'
 import Basket from './pages/Basket'
-import Header from './components/Header'
 
 function App() {
   return (
