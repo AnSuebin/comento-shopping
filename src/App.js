@@ -6,7 +6,7 @@ import Basket from './pages/Basket'
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="comento-shopping">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product" element={<ProductDetail />} />
