@@ -26,6 +26,11 @@ const ProductSection = styled.div`
 const Home = () => {
   const [products, setProducts] = useState(mockTheme1Produdcts)
 
+  useEffect(() => {
+    setTimeout(() => {
+      setProducts(mockTheme1Produdcts)
+    }, 1000)
+  }, [])
 
   const onClickThemeButton = (themeId) => {
     if (themeId === 1) {
