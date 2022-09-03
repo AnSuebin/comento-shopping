@@ -11,10 +11,12 @@ const Tegbutton = styled.button`
   margin-left: ${(props) => props.$marginLeft || '0'};
 `
 
-const ThemeButton = ({ themeName, marginLeft }) => {
+const ThemeButton = ({ themeName, marginLeft, onClick }) => {
   return (
     <>
-      <Tegbutton $marginLeft={marginLeft}>{themeName}</Tegbutton>
+      <Tegbutton $marginLeft={marginLeft} onClick={onClick}>
+        {themeName}
+      </Tegbutton>
     </>
   )
 }

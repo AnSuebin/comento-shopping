@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Header from '../components/Header'
 import ThemeButton from '../components/ThemeButton'
 import { mockTheme1Produdcts, mockTheme2Produdcts } from '../data/mockData'
+import { useEffect, useState } from 'react'
 
 const ThinLine = styled.hr`
   border: solid 1px rgba(238, 238, 238, 1);
@@ -23,19 +24,36 @@ const ProductSection = styled.div`
   padding-bottom: 82px;
 `
 const Home = () => {
-  console.log(mockTheme1Produdcts)
+  const [products, setProducts] = useState(mockTheme1Produdcts)
+
+
+  const onClickThemeButton = (themeId) => {
+    if (themeId === 1) {
+      setProducts(mockTheme1Produdcts)
+    } else if (themeId === 2) {
+      setProducts(mockTheme2Produdcts)
+    }
+  }
   return (
     <div>
       <Header />
       <ThinLine />
       <ThemeSection>
-        <ThemeButton themeName={'# 겨울 방한템'} />
-        <ThemeButton themeName={'# 따순머그컵'} marginLeft="13px" />
+        <ThemeButton
+          themeName={'# 겨울 방한템'}
+          onClick={() => onClickThemeButton(1)}
+        />
+        <ThemeButton
+          themeName={'# 따순머그컵'}
+          marginLeft="13px"
+          onClick={() => onClickThemeButton(2)}
+        />
       </ThemeSection>
       <BoldLine />
       <ProductSection>
-        {mockTheme1Produdcts.map((product) => (
+        {products.map((product) => (
           <ProductBrief
+            key={product.name}
             img={product.thumbnail}
             productName={product.name}
             productIntroduction={product.description}
