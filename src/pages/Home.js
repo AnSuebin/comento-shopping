@@ -1,32 +1,23 @@
 import ProductBrief from '../components/ProductBrief'
 import styled from 'styled-components'
 import Header from '../components/Header'
+import ThemeButton from '../components/ThemeButton'
 
-const MainLine = styled.hr`
+const ThinLine = styled.hr`
   border: solid 1px rgba(238, 238, 238, 1);
 `
 
-const Tegbutton = styled.button`
-  font-size: 20px;
-  font-weight: 700;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 24px 16px;
-  border: none;
-  border-radius: 10px;
-  margin-left: ${(props) => props.$marginLeft || '0'};
-`
 const BoldLine = styled.hr`
   border: solid 8px rgba(238, 238, 238, 1);
 `
 
-const BottonContainer = styled.div`
+const ThemeSection = styled.div`
   width: 341px;
   padding-top: 43px;
   padding-bottom: 40px;
 `
 
-const MainContainer = styled.div`
+const ProductSection = styled.div`
   padding-top: 43px;
   padding-bottom: 82px;
 `
@@ -34,13 +25,13 @@ const Home = () => {
   return (
     <div>
       <Header />
-      <MainLine />
-      <BottonContainer>
-        <Tegbutton># 겨울 방한템</Tegbutton>
-        <Tegbutton $marginLeft="13px"># 따순머그컵</Tegbutton>
-      </BottonContainer>
+      <ThinLine />
+      <ThemeSection>
+        <ThemeButton themeName={'# 겨울 방한템'} />
+        <ThemeButton themeName={'# 따순머그컵'} marginLeft="13px" />
+      </ThemeSection>
       <BoldLine />
-      <MainContainer>
+      <ProductSection>
         <ProductBrief
           img={
             'https://raw.githubusercontent.com/congchu/coment-shop-server/master/assets/images/product1.jpg'
@@ -68,7 +59,7 @@ const Home = () => {
             '솜사탕처럼 부드러운 쉐입에 스트라이프 조각이 더해져 심플하면서도 세련된 파스텔 컬러의 머그'
           }
         />
-      </MainContainer>
+      </ProductSection>
     </div>
   )
 }
