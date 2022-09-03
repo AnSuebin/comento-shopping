@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import ThemeButton from '../components/ThemeButton'
 import { mockTheme1Produdcts, mockTheme2Produdcts } from '../data/mockData'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const ThinLine = styled.hr`
   border: solid 1px rgba(238, 238, 238, 1);
@@ -25,6 +26,7 @@ const ProductSection = styled.div`
 `
 const Home = () => {
   const [products, setProducts] = useState(mockTheme1Produdcts)
+  const navigate = useNavigate()
 
   useEffect(() => {
     setTimeout(() => {
@@ -58,6 +60,7 @@ const Home = () => {
       <ProductSection>
         {products.map((product) => (
           <ProductBrief
+            onClick={() => navigate(`product/${product.id}`)}
             key={product.name}
             img={product.thumbnail}
             productName={product.name}

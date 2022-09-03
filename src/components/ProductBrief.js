@@ -21,9 +21,9 @@ const ProductIntroduction = styled.p`
   margin-top: 12px;
 `
 
-const ProductBrief = ({ img, productName, productIntroduction }) => {
+const ProductBrief = ({ img, productName, productIntroduction, onClick }) => {
   return (
-    <ProductContainer>
+    <ProductContainer onClick={onClick}>
       <ProductImg src={img} alt={productName} />
       <ProductName>{productName}</ProductName>
       <ProductIntroduction>{productIntroduction}</ProductIntroduction>
