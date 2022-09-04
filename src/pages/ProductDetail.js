@@ -79,7 +79,7 @@ const ProductDetail = () => {
           </ProductInfoContainer>
         </>
       )}
-
+      {/* 클릭에 따른 버튼 디자인 변경을 하고 싶어 이렇게 구현하였는데, 너무 비효율 적으로 한 것 같아서 질문 남깁니다 */}
       <ProductInfoButtonContainer>
         {infoType === 'detail' && (
           <>
