@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 const ProductContainer = styled.div`
+  cursor: pointer;
   width: 342px;
 `
 
