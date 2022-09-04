@@ -8,6 +8,7 @@ const Tegbutton = styled.button`
   padding: 24px 16px;
   border: none;
   border-radius: 10px;
+  cursor: pointer;
   margin-left: ${(props) => props.$marginLeft || '0'};
 `
 
