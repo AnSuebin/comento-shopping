@@ -57,7 +57,7 @@ const ProductDetail = () => {
   }, [productId])
 
   // 버튼 쿨릭에 따라 상품 정보 변경 로직
-  const [infoType, setInfoType] = useState()
+  const [infoType, setInfoType] = useState('detail')
   const onClickInfoButton = (infoTypeId) => {
     if (infoTypeId === 1) {
       setInfoType('detail')
