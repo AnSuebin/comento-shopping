@@ -54,7 +54,7 @@ const ProductDetail = () => {
   useEffect(() => {
     const result = getProductDetail(productId)
     setProduct(result)
-  })
+  }, [productId])
 
   // 버튼 쿨릭에 따라 상품 정보 변경 로직
   const [infoType, setInfoType] = useState()
