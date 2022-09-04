@@ -2,8 +2,10 @@ import styled from 'styled-components'
 import ProductDetailInfo from '../components/ProductDetailInfo'
 import ProductDetailReview from '../components/ProductDetailReview'
 import Header from '../components/Header'
-import { useState } from 'react'
 import BusketButton from '../components/BusketButton'
+import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { getProductDetail } from '../data/mockData'
 
 const MainImg = styled.img`
   width: 390px;
@@ -47,6 +49,16 @@ const ProductDetailContainer = styled.div`
   width: 390px;
 `
 const ProductDetail = () => {
+  //url에서 paramter 받아오는 로직
+  const { productId } = useParams()
+  const [product, setProduct] = useState()
+
+  useEffect(() => {
+    const result = getProductDetail(productId)
+    setProduct(result)
+  })
+  console.log(product)
+
   const [detail, setDetail] = useState(true)
   const ProductInfoOnClick = () => {
     setDetail(true)
@@ -57,14 +69,12 @@ const ProductDetail = () => {
   return (
     <ProductDetailContainer>
       <Header />
-      <MainImg
-        src="https://raw.githubusercontent.com/congchu/coment-shop-server/master/assets/images/product1.jpg"
-        alt="비숑 블랙 머그잔"
-      />
+      <MainImg src={product.thumbnail} alt={product.name} />
       <ProductInfoContainer>
-        <ProductName>비숑 블랙 머그잔</ProductName>
+        <ProductName>{product.name}</ProductName>
         <ProductPrice>21,800원</ProductPrice>
       </ProductInfoContainer>
+
       <ProductInfoButtonContainer>
         <ProductInfoButton
           $backgroundColor="rgba(238, 238, 238, 1)"
