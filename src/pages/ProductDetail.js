@@ -15,7 +15,6 @@ const MainImg = styled.img`
 const ProductInfoContainer = styled.div`
   width: 390px;
 `
-
 const ProductName = styled.h5`
   font-size: 20px;
   font-weight: 700;
@@ -52,22 +51,25 @@ const ProductDetail = () => {
   //url에서 paramter 받아오는 로직
   const { productId } = useParams()
   const [product, setProduct] = useState()
-
   useEffect(() => {
     const result = getProductDetail(productId)
     setProduct(result)
   })
 
-  const [detail, setDetail] = useState(true)
-  const ProductInfoOnClick = () => {
-    setDetail(true)
+  // 버튼 쿨릭에 따라 상품 정보 변경 로직
+  const [infoType, setInfoType] = useState()
+  const onClickInfoButton = (infoTypeId) => {
+    if (infoTypeId === 1) {
+      setInfoType('detail')
+    } else if (infoTypeId === 2) {
+      setInfoType('review')
+    }
   }
-  const ProductReviewOnClick = () => {
-    setDetail(false)
-  }
+
   return (
     <ProductDetailContainer>
       <Header />
+      {/* 제품 윗단 불러오기 */}
       {product && (
         <>
           <MainImg src={product.thumbnail} alt={product.name} />
@@ -79,19 +81,49 @@ const ProductDetail = () => {
       )}
 
       <ProductInfoButtonContainer>
-        <ProductInfoButton
-          $backgroundColor="rgba(238, 238, 238, 1)"
-          $fontWeight="700"
-          onClick={ProductInfoOnClick}
-        >
-          상품 설명
-        </ProductInfoButton>
-        <ProductInfoButton onClick={ProductReviewOnClick}>
-          상품 후기
-        </ProductInfoButton>
+        {infoType === 'detail' && (
+          <>
+            <ProductInfoButton
+              $backgroundColor="rgba(238, 238, 238, 1)"
+              $fontWeight="700"
+              onClick={() => {
+                onClickInfoButton(1)
+              }}
+            >
+              상품 설명
+            </ProductInfoButton>
+            <ProductInfoButton
+              onClick={() => {
+                onClickInfoButton(2)
+              }}
+            >
+              상품 후기
+            </ProductInfoButton>
+          </>
+        )}
+        {infoType === 'review' && (
+          <>
+            <ProductInfoButton
+              onClick={() => {
+                onClickInfoButton(1)
+              }}
+            >
+              상품 설명
+            </ProductInfoButton>
+            <ProductInfoButton
+              $backgroundColor="rgba(238, 238, 238, 1)"
+              $fontWeight="700"
+              onClick={() => {
+                onClickInfoButton(2)
+              }}
+            >
+              상품 후기
+            </ProductInfoButton>
+          </>
+        )}
       </ProductInfoButtonContainer>
-
-      {detail ? <ProductDetailInfo /> : <ProductDetailReview />}
+      {infoType === 'detail' && <ProductDetailInfo />}
+      {infoType === 'review' && <ProductDetailReview />}
       <BusketButton />
     </ProductDetailContainer>
   )
