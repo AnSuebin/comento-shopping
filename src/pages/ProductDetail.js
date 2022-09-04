@@ -57,7 +57,6 @@ const ProductDetail = () => {
     const result = getProductDetail(productId)
     setProduct(result)
   })
-  console.log(product)
 
   const [detail, setDetail] = useState(true)
   const ProductInfoOnClick = () => {
@@ -69,11 +68,15 @@ const ProductDetail = () => {
   return (
     <ProductDetailContainer>
       <Header />
-      <MainImg src={product.thumbnail} alt={product.name} />
-      <ProductInfoContainer>
-        <ProductName>{product.name}</ProductName>
-        <ProductPrice>21,800원</ProductPrice>
-      </ProductInfoContainer>
+      {product && (
+        <>
+          <MainImg src={product.thumbnail} alt={product.name} />
+          <ProductInfoContainer>
+            <ProductName>{product.name}</ProductName>
+            <ProductPrice>{product.price}</ProductPrice>
+          </ProductInfoContainer>
+        </>
+      )}
 
       <ProductInfoButtonContainer>
         <ProductInfoButton
@@ -87,6 +90,7 @@ const ProductDetail = () => {
           상품 후기
         </ProductInfoButton>
       </ProductInfoButtonContainer>
+
       {detail ? <ProductDetailInfo /> : <ProductDetailReview />}
       <BusketButton />
     </ProductDetailContainer>
