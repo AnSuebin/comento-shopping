@@ -3,9 +3,12 @@ import ProductDetailInfo from '../components/ProductDetailInfo'
 import ProductDetailReview from '../components/ProductDetailReview'
 import Header from '../components/Header'
 import BusketButton from '../components/BusketButton'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { getProductDetail } from '../data/mockData'
+// storage라는 표시를 잘 드러내기 위해서 아래와 같은 형식으로도 사용
+// 기존 방식 import {getBasketItems, addItemToBasket} from '../utils/storage'
+import * as storage from '../utils/storage'
 
 const MainImg = styled.img`
   width: 390px;
@@ -49,10 +52,14 @@ const ProductInfoButton = styled.div`
 const ProductDetailContainer = styled.div`
   width: 390px;
 `
+
 const ProductDetail = () => {
+  const navigate = useNavigate()
+
   //url에서 paramter 받아오는 로직
   const { productId } = useParams()
   const [product, setProduct] = useState()
+
   useEffect(() => {
     const result = getProductDetail(productId)
     setProduct(result)
@@ -66,6 +73,13 @@ const ProductDetail = () => {
     } else if (infoTypeId === 2) {
       setInfoType('review')
     }
+  }
+
+  const onClickAddBasketButton = () => {
+    // 장바구니에 아이템을 담는다
+    storage.addItemToBasket(product)
+    // 장바구니 페이지로 이동한다.
+    navigate('/basket')
   }
 
   return (
@@ -104,7 +118,7 @@ const ProductDetail = () => {
       </ProductInfoButtonContainer>
       {infoType === 'detail' && <ProductDetailInfo />}
       {infoType === 'review' && <ProductDetailReview />}
-      <BusketButton />
+      <BusketButton onClick={onClickAddBasketButton} />
     </ProductDetailContainer>
   )
 }

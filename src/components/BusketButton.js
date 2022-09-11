@@ -9,10 +9,10 @@ const Button = styled.button`
   border: none;
 `
 
-const BusketButton = () => {
+const BusketButton = ({ onClick }) => {
   return (
     <div>
-      <Button>장바구니 담기</Button>
+      <Button onClick={onClick}>장바구니 담기</Button>
     </div>
   )
 }
