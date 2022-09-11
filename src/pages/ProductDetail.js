@@ -55,6 +55,9 @@ const ProductDetailContainer = styled.div`
 
 const ProductDetail = () => {
   const navigate = useNavigate()
+  // const location = useLocation()
+
+  // console.log(location)
 
   //url에서 paramter 받아오는 로직
   const { productId } = useParams()
