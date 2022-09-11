@@ -24,4 +24,16 @@ const addItemToBasket = (product) => {
   }
 }
 
-export { getBasketItems, addItemToBasket }
+const removeBasketItem = (productId) => {
+  // removeItem만 하면 그냥 전체가 날라감
+  // 1. 기존 장바구니 상품 리스트 가져오기
+  let items = getBasketItems()
+  // 2. 삭제하고 싶은 상품을 제외한 리스트 만들기
+  items = items.filter((item) => item.id !== productId)
+  // 3. 로컬스토리지에서 장바구니 정보 날리기
+  localStorage.removeItem(BASKET)
+  // 4. 다시 상품리스트 저장하기
+  localStorage.setItem(BASKET, JSON.stringify(items))
+}
+
+export { getBasketItems, addItemToBasket, removeBasketItem }

@@ -46,6 +46,7 @@ const CloseButton = styled.h3`
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
+  cursor: pointer;
 `
 const ProductPrice = styled.h3`
   margin: 0;
@@ -60,24 +61,15 @@ const ThinLine = styled.hr`
   border: solid 1px rgba(238, 238, 238, 1);
 `
 
-const BasketItem = ({
-  Thumnail,
-  productName,
-  price,
-  // onClickRemoveButton
-}) => {
+const BasketItem = ({ Thumnail, productName, price, onClickRemoveButton }) => {
   return (
     <>
       <BasketItemStyled>
         <ProductImage src={Thumnail} alt={productName} />
         <LayoutText>
           <ProductTitle>{productName}</ProductTitle>
-          <CloseButton
-          //   onClick={onClickRemoveButton}
-          >
-            X
-          </CloseButton>
-          <ProductPrice>{price}원</ProductPrice>
+          <CloseButton onClick={onClickRemoveButton}>X</CloseButton>
+          <ProductPrice>{price}</ProductPrice>
         </LayoutText>
         <ThinLine />
       </BasketItemStyled>
