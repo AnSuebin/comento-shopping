@@ -38,8 +38,10 @@ const ProductInfoButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${(props) => props.$backgroundColor};
-  font-weight: ${(props) => props.$fontWeight};
+  // active를 활용해서 background 변경
+  background-color: ${(props) =>
+    props.active ? 'rgba(238, 238, 238, 1)' : 'white'};
+  font-weight: ${(props) => (props.active ? '700' : '500')};
   border: 1px solid rgba(238, 238, 238, 1);
   font-size: 16px;
   cursor: pointer;
@@ -79,48 +81,26 @@ const ProductDetail = () => {
           </ProductInfoContainer>
         </>
       )}
-      {/* 클릭에 따른 버튼 디자인 변경을 하고 싶어 이렇게 구현하였는데, 너무 비효율 적으로 한 것 같아서 질문 남깁니다 */}
+
       <ProductInfoButtonContainer>
-        {infoType === 'detail' && (
-          <>
-            <ProductInfoButton
-              $backgroundColor="rgba(238, 238, 238, 1)"
-              $fontWeight="700"
-              onClick={() => {
-                onClickInfoButton(1)
-              }}
-            >
-              상품 설명
-            </ProductInfoButton>
-            <ProductInfoButton
-              onClick={() => {
-                onClickInfoButton(2)
-              }}
-            >
-              상품 후기
-            </ProductInfoButton>
-          </>
-        )}
-        {infoType === 'review' && (
-          <>
-            <ProductInfoButton
-              onClick={() => {
-                onClickInfoButton(1)
-              }}
-            >
-              상품 설명
-            </ProductInfoButton>
-            <ProductInfoButton
-              $backgroundColor="rgba(238, 238, 238, 1)"
-              $fontWeight="700"
-              onClick={() => {
-                onClickInfoButton(2)
-              }}
-            >
-              상품 후기
-            </ProductInfoButton>
-          </>
-        )}
+        <ProductInfoButton
+          // active를 활용해서 background 변경
+          active={infoType === 'detail'}
+          onClick={() => {
+            onClickInfoButton(1)
+          }}
+        >
+          상품 설명
+        </ProductInfoButton>
+        <ProductInfoButton
+          // active를 활용해서 background 변경
+          active={infoType === 'review'}
+          onClick={() => {
+            onClickInfoButton(2)
+          }}
+        >
+          상품 후기
+        </ProductInfoButton>
       </ProductInfoButtonContainer>
       {infoType === 'detail' && <ProductDetailInfo />}
       {infoType === 'review' && <ProductDetailReview />}
