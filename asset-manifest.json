@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/comento-shopping/static/css/main.0825cff5.css",
+    "main.js": "/comento-shopping/static/js/main.351dc42f.js",
+    "static/media/ProductDetailImg.png": "/comento-shopping/static/media/ProductDetailImg.eb80756f6601bf794081.png",
+    "static/media/Review1.png": "/comento-shopping/static/media/Review1.7d05399a37ab267d5b15.png",
+    "index.html": "/comento-shopping/index.html",
+    "main.0825cff5.css.map": "/comento-shopping/static/css/main.0825cff5.css.map",
+    "main.351dc42f.js.map": "/comento-shopping/static/js/main.351dc42f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0825cff5.css",
+    "static/js/main.351dc42f.js"
+  ]
+}
