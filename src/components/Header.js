@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const MainTitleContainer = styled.div`
   text-align: center;
@@ -11,6 +11,7 @@ const BackButton = styled.h5`
   font-size: 18px;
   font-weight: 700;
   top: 20px;
+  cursor: pointer;
 `
 
 const MainTitle = styled.h5`
@@ -22,10 +23,13 @@ const MainTitle = styled.h5`
 
 const Header = () => {
   const location = useLocation()
+  const navigate = useNavigate()
 
   return (
     <MainTitleContainer>
-      {location.pathname !== '/' && <BackButton>{'<'}</BackButton>}
+      {location.pathname !== '/' && (
+        <BackButton onClick={() => navigate(-1)}>{'<'}</BackButton>
+      )}
       <MainTitle>
         {location.pathname === '/basket' ? '장바구니' : '코멘토 쇼핑'}
       </MainTitle>
